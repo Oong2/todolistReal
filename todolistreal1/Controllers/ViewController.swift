@@ -7,8 +7,17 @@
 
 import UIKit
 import SwiftUI
+import SnapKit
 
 class ViewController: UIViewController {
+    
+    
+    let goInstaView : UIButton = {
+       let view = UIButton()
+        view.setImage(UIImage(named: "insta"), for: .normal)
+        
+        return view
+    }()
     
     let image1 : UIImageView = {
         //      imageView의 형태지정을 위한 clouser
@@ -54,10 +63,12 @@ class ViewController: UIViewController {
         configureBtn1()
         configureBtn2()
         configureIimage1()
+        setupViews()
         
         btn1.addTarget(self, action: #selector(btn1Click), for: .touchUpInside)
         btn2.addTarget(self, action: #selector(btn2Click), for: .touchUpInside)
-
+        goInstaView.addTarget(self, action: #selector(instaViewClick), for: .touchUpInside)
+        
     }
     
     @objc func btn1Click(){
@@ -71,6 +82,27 @@ class ViewController: UIViewController {
     @objc func btn2Click(){
             let viewController3 = successViewController()
         self.navigationController?.pushViewController(viewController3, animated: true)
+    }
+    
+    @objc func instaViewClick(){
+        let instaViewController = instaViewController()
+        instaViewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        present(instaViewController, animated: true, completion: nil)
+    }
+    
+    func setupViews(){
+//        [goInstaView].forEach({ view.addSubview($0) })
+        view.addSubview(goInstaView)
+        setConstraints()
+    }
+    
+    func setConstraints(){
+        goInstaView.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalToSuperview().offset(640)
+            make.width.equalTo(80)
+            make.height.equalTo(60)
+        }
     }
     
     func configureIimage1() {

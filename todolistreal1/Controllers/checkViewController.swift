@@ -224,10 +224,10 @@ class checkViewController: UIViewController,UITableViewDelegate, UITableViewData
         }
     }
     
-        func numberOfSections(in tableView: UITableView) -> Int {
-            //      section의 갯수를 정의해준다. 즉 header와 tableViewCell을 하나로보고 몇개를 추가할지 정의하는셈.
-            return 2
-        }
+//        func numberOfSections(in tableView: UITableView) -> Int {
+//            //      section의 갯수를 정의해준다. 즉 header와 tableViewCell을 하나로보고 몇개를 추가할지 정의하는셈.
+//            return 1
+//        }
 
         func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
             //     Section Header에 나타날 글자를 정하는 코드
